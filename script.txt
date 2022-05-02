@@ -1,0 +1,22 @@
+CREATE (mishel:Alumno {nombre:'Mishel Flores'})
+CREATE (josue:Alumno {nombre:'Josue Muñoz'})
+CREATE (karla:Alumno {nombre:'Karla Velasquez'})
+CREATE (maria:Alumno {nombre:'Maria Muñoz'})
+CREATE (cesar:Alumno {nombre:'Cesar Diaz'})
+CREATE (david:Alumno {nombre:'David Giron'})
+CREATE (esteban:Alumno {nombre:'Esteban Flores'})
+CREATE (junior:Alumno {nombre:'Junior Flores'})
+CREATE (juan:Alumno {nombre:'Juan Muñoz'})
+CREATE (german:Alumno {nombre:'German Batres'})
+CREATE (mishel)-[:ES_AMIGO_DE]->(josue)-[:ES_AMIGO_DE]->(karla)-[:ES_AMIGO_DE]->(mishel)-[:ES_AMIGO_DE]->(maria)-[:ES_AMIGO_DE]->(cesar)-[:ES_AMIGO_DE]->(junior)-[:ES_AMIGO_DE]->(juan)-[:ES_AMIGO_DE]->(german)-[:ES_AMIGO_DE]->(karla)-[:ES_AMIGO_DE]->(david)
+CREATE (ingenieria: Facultad {nombre:'Facultad'})
+
+CREATE (progra:Curso {nombre:'Programacion'}), (estadistica:Curso {nombre:'Base de datos'})
+CREATE (electronica:Curso {nombre:'Electronica'}),  (so:Curso {nombre:'Sistemas Operativos'})
+
+
+MATCH (cursos: Curso), (facultades: Facultad)
+CREATE (cursos)-[:PERTENECE]->(facultades)
+
+MATCH (estudiantes: Alumno), (cursos: Curso)
+CREATE (estudiantes)-[:ESTA_INSCRITO_EN]->(cursos)
